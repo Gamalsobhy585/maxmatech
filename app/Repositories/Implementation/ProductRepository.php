@@ -15,7 +15,6 @@ class ProductRepository implements IProduct
                     $q->where('name', 'like', "%{$query}%");
                 });
             })
-          
             ->orderBy($sort_by, $sort_direction)
             ->paginate($limit);
 
