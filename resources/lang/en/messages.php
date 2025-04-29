@@ -1,0 +1,67 @@
+<?php
+
+return [
+ 
+    'validation' => [
+        'type_required' => 'Invoice type is required',
+        'type_in' => 'Invalid invoice type',
+        'payment_method_required' => 'Payment method is required',
+        'payment_method_in' => 'Invalid payment method',
+        'original_invoice_number_required_if' => 'Original invoice number is required for returns and exchanges',
+        'original_invoice_number_exists' => 'Original invoice number does not exist',
+        'total_required' => 'Total amount is required',
+        'total_numeric' => 'Total amount must be a number',
+        'total_min' => 'Total amount cannot be negative',
+        'discount_required' => 'Discount amount is required',
+        'discount_numeric' => 'Discount amount must be a number',
+        'discount_min' => 'Discount amount cannot be negative',
+        'tax_table_required' => 'Table tax amount is required',
+        'tax_table_numeric' => 'Table tax amount must be a number',
+        'tax_table_min' => 'Table tax amount cannot be negative',
+        'tax_additional_required' => 'Additional tax amount is required',
+        'tax_additional_numeric' => 'Additional tax amount must be a number',
+        'tax_additional_min' => 'Additional tax amount cannot be negative',
+        'net_amount_required' => 'Net amount is required',
+        'net_amount_numeric' => 'Net amount must be a number',
+        'net_amount_min' => 'Net amount cannot be negative',
+        'items_required' => 'At least one invoice item is required',
+        'items_array' => 'Invoice items must be an array',
+        'items_min' => 'At least one invoice item is required',
+        'items_product_id_required' => 'Product ID is required for all items',
+        'items_product_id_exists' => 'Product does not exist',
+        'items_category_id_required' => 'Category ID is required for all items',
+        'items_category_id_exists' => 'Category does not exist',
+        'items_quantity_required' => 'Quantity is required for all items',
+        'items_quantity_integer' => 'Quantity must be an integer',
+        'items_quantity_min' => 'Quantity must be at least 1',
+        'items_selling_unit_price_required' => 'Selling unit price is required for all items',
+        'items_selling_unit_price_numeric' => 'Selling unit price must be a number',
+        'items_selling_unit_price_min' => 'Selling unit price cannot be negative',
+        'items_discount_required' => 'Discount is required for all items',
+        'items_discount_numeric' => 'Discount must be a number',
+        'items_discount_min' => 'Discount cannot be negative',
+        'items_tax_required' => 'Tax is required for all items',
+        'items_tax_numeric' => 'Tax must be a number',
+        'items_tax_min' => 'Tax cannot be negative',
+        'items_total_required' => 'Total is required for all items',
+        'items_total_numeric' => 'Total must be a number',
+        'items_total_min' => 'Total cannot be negative',
+    ],
+    "product" => [
+        "get_all" => "Products retrieved successfully",
+        "get_failed" => "Failed to retrieve products",
+    ],
+
+    "category" => [
+        "get_all" => "Categories retrieved successfully",
+        "get_failed" => "Failed to retrieve categories",
+       
+    ],
+
+    "invoice"=>[
+        "get_all" => "Invoices retrieved successfully",
+        "get_failed" => "Failed to retrieve invoices",
+        "get" => "Invoice retrieved successfully",
+        
+    ]
+];

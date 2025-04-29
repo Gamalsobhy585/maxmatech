@@ -6,16 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+ 
     public function up(): void
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_number')->unique();
-            $table->enum('type', ['sale', 'return', 'exchange'])->default('sale');
-            $table->enum('payment_method', ['cash', 'credit'])->default('cash');
+            $table->enum('type', [1,2,3])->comment('1: sales, 2: return, 3: exchange')->default(1);
+            $table->enum('payment_method', ['cash', 'credit'])->default('cash')->index();
             $table->string('original_invoice_number')->nullable();
             $table->decimal('total', 10, 2)->default(0);
             $table->decimal('discount', 10, 2)->default(0);
