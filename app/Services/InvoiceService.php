@@ -57,7 +57,7 @@ class InvoiceService implements IInvoiceService
         try {
             $data = [
                 'invoice' => [
-                    'type' => $request->type,
+                    'type' => 3,
                     'payment_method' => $request->payment_method,
                     'original_invoice_number' => $request->original_invoice_number,
                     'total' => $request->total,

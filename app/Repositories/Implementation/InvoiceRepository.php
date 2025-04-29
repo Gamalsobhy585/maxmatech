@@ -68,8 +68,23 @@ class InvoiceRepository implements IInvoice
 
     public function update($model, $data)
     {
-        $model->fill($data);
-        return $model->save();
+        DB::beginTransaction();
+        
+        try {
+            $model->update($data['invoice']);
+    
+            $model->items()->delete();
+    
+            foreach ($data['items'] as $item) {
+                $model->items()->create($item);
+            }
+    
+            DB::commit();
+            return $model->load('items.product');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
     public function getById($id)
     {
