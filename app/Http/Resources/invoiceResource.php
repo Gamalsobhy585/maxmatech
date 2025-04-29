@@ -21,8 +21,8 @@ class InvoiceResource extends JsonResource
             'tax_additional' => $this->tax_additional,
             'net_amount' => $this->net_amount,
             'items' => InvoiceItemResource::collection($this->whenLoaded('items')),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'), 
+            'updated_at' => $this->updated_at->format('Y-m-d H:i:s'), 
         ];
     }
 

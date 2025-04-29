@@ -25,9 +25,8 @@ class InvoiceItemResource extends JsonResource
             'tax' => $this->tax,
             'total' => $this->total,
             'product' => new ProductItemResource($this->whenLoaded('product')),
-            'category' => $this->whenLoaded('category'),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'category' => new CategoryResource($this->whenLoaded('category')),
+
         ];
     }
 }

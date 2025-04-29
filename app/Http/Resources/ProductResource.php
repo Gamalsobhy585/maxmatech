@@ -16,8 +16,7 @@ class ProductResource extends JsonResource
             'units_per_box' => $this->units_per_box,
             'box_price' => $this->box_price,
             'carton_price' => $this->carton_price,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+
         ];
     }
 

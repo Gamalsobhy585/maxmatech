@@ -10,28 +10,38 @@ use App\Models\Category;
 
 class InvoiceRepository implements IInvoice
 {
-    public function get($query,$limit,$filter)
+    public function get($query, $limit, $filter)
     {
-        $invoice = Invoice::when($query, function ($q) use ($query) {
+        return Invoice::with(['items.product', 'items.category']) 
+            ->when($query, function ($q) use ($query) {
                 return $q->where(function ($q) use ($query) {
                     $q->where('invoice_number', 'like', "%{$query}%");
+                      
                 });
             })
             ->when($filter, function ($q) use ($filter) {
-                $types=[
-                    'sale' =>1,
-                    'return' =>2,
-                    'exchange' =>3,
+                $types = [
+                    'sale' => 1,
+                    'return' => 2,
+                    'exchange' => 3,
                 ];
+                
+                $paymentTypes = [
+                    'cash' => 'cash',
+                    'credit' => 'credit'
+                ];
+                
                 if (array_key_exists($filter, $types)) {
                     return $q->where('type', $types[$filter]);
                 }
-               
                 
+                if (array_key_exists($filter, $paymentTypes)) {
+                    return $q->where('payment_method', $paymentTypes[$filter]);
+                }
                 
                 return $q;
             })
-            ->orderBy('id','asc')
+            ->orderBy('created_at', 'desc')
             ->paginate($limit);
     }
 
@@ -70,7 +80,6 @@ class InvoiceRepository implements IInvoice
         $product = Product::findOrFail($productId);
         $category = Category::findOrFail($categoryId);
         
-        // Based on category name, return the appropriate price
         switch ($category->name) {
             case 'Box':
                 return $product->box_price;
