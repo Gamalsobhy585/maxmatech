@@ -120,4 +120,10 @@ class InvoiceRepository implements IInvoice
         
         return $total;
     }
+
+    public function changeInvoiceTypeToReturn($invoiceId)
+    {
+        return Invoice::where('id', $invoiceId)
+        ->update(['type' => 2]);
+    }
 }

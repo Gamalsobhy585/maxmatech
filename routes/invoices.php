@@ -14,6 +14,7 @@ Route::prefix('invoices')->group(function () {
     Route::post('/calculate-selling-price', [InvoiceController::class, 'getSellingPrice']);
     Route::post('/calculate-item-total', [InvoiceController::class, 'getItemTotal']);
     Route::post('/calculate-item-total-with-tax-discount', [InvoiceController::class, 'getItemTotalAfterTaxAndDiscount']);
+    Route::patch('/{invoice}/mark-as-return', [InvoiceController::class, 'changeInvoiceTypeToReturn']);
 });
     
 

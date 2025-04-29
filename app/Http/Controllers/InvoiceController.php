@@ -153,6 +153,23 @@ class InvoiceController extends Controller
         }
     }
     
+    public function changeInvoiceTypeToReturn(Invoice $invoice)
+    {
+        try {
+            $this->invoiceService->changeInvoiceStatusToReturn($invoice->id);
+            
+            return $this->success(
+                __('messages.invoice.marked_as_return'),
+                200
+            );
+        } catch (\Throwable $e) {
+            Log::error($e->getMessage());
+            return $this->returnError(
+                __('messages.invoice.mark_failed'),
+                500
+            );
+        }
+    }
 
  
 }

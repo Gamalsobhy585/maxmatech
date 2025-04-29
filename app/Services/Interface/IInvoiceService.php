@@ -11,5 +11,7 @@ interface IInvoiceService
     public function getSellingPriceForInvoiceItem($productId, $categoryId);
     public function getInvoiceItemTotal($productId, $categoryId, $quantity);
     public function getInvoiceItemTotalAfterTaxAndDiscount($productId, $categoryId, $quantity, $tax);
+    public function changeInvoiceStatusToReturn($invoiceId);
+
     
 }

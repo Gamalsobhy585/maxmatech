@@ -124,5 +124,14 @@ class InvoiceService implements IInvoiceService
         
         return $prefix . '-' . $date . '-' . $random;
     }
+    public function changeInvoiceStatusToReturn($invoiceId)
+    {
+        try {
+            return $this->invoicerepo->changeInvoiceTypeToReturn($invoiceId);
+        } catch (\Throwable $e) {
+            Log::error($e->getMessage());
+            throw $e;
+        }
+    }
 }
 
