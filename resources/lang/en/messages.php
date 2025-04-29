@@ -46,6 +46,21 @@ return [
         'items_total_required' => 'Total is required for all items',
         'items_total_numeric' => 'Total must be a number',
         'items_total_min' => 'Total cannot be negative',
+        'product_id_required' => 'Product ID is required.',
+        'product_id_exists' => 'The selected product does not exist.',
+        'category_id_required' => 'Category ID is required.',
+        'category_id_exists' => 'The selected category does not exist.',
+        'quantity_required' => 'Quantity is required.',
+        'quantity_integer' => 'Quantity must be an integer.',
+        'quantity_min' => 'Quantity must be at least 1.',
+        'tax_required' => 'Tax is required.',
+        'tax_numeric' => 'Tax must be a number.',
+        'tax_min' => 'Tax must be at least 0.',
+        'discount_required' => 'Discount is required.',
+        'discount_numeric' => 'Discount must be a number.',
+        'discount_min' => 'Discount must be at least 0.',
+
+        
     ],
     "product" => [
         "get_all" => "Products retrieved successfully",
@@ -59,9 +74,16 @@ return [
     ],
 
     "invoice"=>[
-        "get_all" => "Invoices retrieved successfully",
-        "get_failed" => "Failed to retrieve invoices",
-        "get" => "Invoice retrieved successfully",
+        'get_all' => 'Invoices retrieved successfully.',
+        'get' => 'Invoice retrieved successfully.',
+        'create' => 'Invoice created successfully.',
+        'update' => 'Invoice updated successfully.',
+        'get_failed' => 'Failed to retrieve invoice.',
+        'create_failed' => 'Failed to create invoice.',
+        'update_failed' => 'Failed to update invoice.',
+        'price_calculated' => 'Selling price calculated successfully.',
+        'total_calculated' => 'Total calculated successfully.',
+        'calculation_failed' => 'Failed to calculate the total.',
         
     ]
 ];
