@@ -10,6 +10,10 @@ use App\Traits\ResponseTrait;
 use App\Services\Interface\IInvoiceService;
 use Illuminate\Support\Facades\Log;
 use App\Http\Resources\InvoiceResource;
+use App\Http\Requests\GetItemTotalAfterTaxAndDiscountRequest;
+use App\Http\Requests\GetSellingPriceRequest;
+use App\Http\Requests\GetItemTotalRequest;
+
 
 class InvoiceController extends Controller
 {
@@ -88,14 +92,9 @@ class InvoiceController extends Controller
         }
     }
 
-    public function getSellingPrice(Request $request)
+    public function getSellingPrice(GetSellingPriceRequest $request)
     {
         try {
-            $request->validate([
-                'product_id' => 'required|exists:products,id',
-                'category_id' => 'required|exists:categories,id',
-            ]);
-            
             $price = $this->invoiceService->getSellingPriceForInvoiceItem(
                 $request->product_id,
                 $request->category_id
@@ -112,15 +111,9 @@ class InvoiceController extends Controller
         }
     }
 
-    public function getItemTotal(Request $request)
+    public function getItemTotal(GetItemTotalRequest $request)
     {
         try {
-            $request->validate([
-                'product_id' => 'required|exists:products,id',
-                'category_id' => 'required|exists:categories,id',
-                'quantity' => 'required|integer|min:1',
-            ]);
-            
             $total = $this->invoiceService->getInvoiceItemTotal(
                 $request->product_id,
                 $request->category_id,
@@ -138,17 +131,9 @@ class InvoiceController extends Controller
         }
     }
 
-    public function getItemTotalAfterTaxAndDiscount(Request $request)
+    public function getItemTotalAfterTaxAndDiscount(GetItemTotalAfterTaxAndDiscountRequest $request)
     {
         try {
-            $request->validate([
-                'product_id' => 'required|exists:products,id',
-                'category_id' => 'required|exists:categories,id',
-                'quantity' => 'required|integer|min:1',
-                'tax' => 'required|numeric|min:0',
-                'discount' => 'required|numeric|min:0',
-            ]);
-            
             $total = $this->invoiceService->getInvoiceItemTotalAfterTaxAndDiscount(
                 $request->product_id,
                 $request->category_id,
